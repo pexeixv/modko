@@ -12,23 +12,24 @@ const makePermutations = (array) => {
 };
 
 const numberGenerator = (numberPlate) => {
-  // return numberPlate.split('')
-
   const generatedNumbers = [];
-  const splittedNumberPlate = numberPlate.split("");
+  const splittedNumberPlate = numberPlate
+    .replaceAll(" ")
+    .replaceAll("-")
+    .split("");
   const districtCode = splittedNumberPlate.slice(2, 4);
   const combinationCode = splittedNumberPlate.slice(-4);
-  generatedNumbers.push(makePermutations(districtCode))
-  generatedNumbers.push(makePermutations(combinationCode))
-  const generatedNumbersArray = generatedNumbers.flat()
-  const generatedNumbersUnique = [...new Set(generatedNumbersArray)]
-  return generatedNumbersUnique.sort()
+  generatedNumbers.push(makePermutations(districtCode));
+  generatedNumbers.push(makePermutations(combinationCode));
+  const generatedNumbersArray = generatedNumbers.flat();
+  const generatedNumbersUnique = [...new Set(generatedNumbersArray)];
+  return generatedNumbersUnique.sort();
 };
 
 const NumberSuggester = () => {
   const [numbers, setNumbers] = useState([]);
   const [input, setInput] = useState("");
-  const inputHandler = (e) => setInput(e.target.value);
+  const inputHandler = (e) => setInput(e.target.value.toUpperCase());
 
   const formHandler = (e) => {
     e.preventDefault();
@@ -47,10 +48,11 @@ const NumberSuggester = () => {
               value={input}
               onChange={(e) => inputHandler(e)}
               type="text"
-              className="rounded-l-lg lg:min-w-[250px] py-2 px-4 text-black"
-              placeholder="GA06A4444"
+              className="rounded-l-lg lg:min-w-[250px] py-2 px-4 text-black shadow-xl shadow-green-500/60 invalid:shadow-red-500/60 outline-none  transition-colors font-bold tracking-wider f placeholder:transition-colors"
+              placeholder="GA06AB3874"
+              pattern="^[A-Z]{2}[0-9]{2}[A-HJ-NP-Z]{1,2}[0-9]{4}$"
             />
-            <button className="bg-slate-800 p-3 rounded-r-lg">
+            <button className="bg-slate-800 p-3 rounded-r-lg outline-none ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
