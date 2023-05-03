@@ -68,7 +68,7 @@ const NumberSuggester = () => {
             </button>
           </form>
         </div>
-        <ul className="flex items-center flex-wrap gap-5 mt-20 justify-center max-w-3xl mx-auto">
+        <ul className="flex items-center flex-wrap gap-5 mt-20 justify-center max-w-3xl mx-auto overflow-hidden">
           {numbers.map((number) => (
             <NumberCard key={number} number={number} />
           ))}
