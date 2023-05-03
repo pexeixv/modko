@@ -13,3 +13,8 @@ The application takes in an Indian vehicle registration number as input and outp
 - [Astro.build](https://astro.build/)
 - [TailwindCSS](https://tailwindcss.com/)
 - [React.js](https://react.dev/)
+
+## TODO
+
+- Add support for new Bharat series (22BH1234AB)
+- Add ability to control amount of numbers in output
